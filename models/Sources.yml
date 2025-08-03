@@ -1,0 +1,15 @@
+version: 2
+
+sources:
+  - name: jaffle_shop1      # Logical source name
+    schema: jaffle_shop       # Schema where source tables exist
+    database: raw_demo    # (optional) Database, if not the default
+    tables:
+      - name: stg_orders
+        identifier: orders
+        loaded_at_field: _ETL_LOADED_AT
+        freshness:
+          warn_after: {count: 12, period: hour}
+          error_after: {count: 24, period: hour}
+      - name: stg_customers
+        identifier: customers

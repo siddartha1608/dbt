@@ -13,3 +13,10 @@ sources:
           error_after: {count: 24, period: hour}
       - name: stg_customers
         identifier: customers
+        columns:
+          - name: id
+            tests:
+              - unique
+              - not_null
+           
+        

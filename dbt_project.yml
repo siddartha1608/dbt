@@ -36,7 +36,10 @@ clean-targets:         # directories to be removed by `dbt clean`
 # using the `{{ config(...) }}` macro.
 
 models:
-  my_new_project:
-    # Applies to all files under models/example/
-    example:
-      +materialized: table
+  +transient: false               # All models default to permanent tables
+
+  my_new_project:                 # This should match the name of your models sub-directory
+    Staging:
+      +materialized: view         # All models under models/my_new_project/Staging/ will be views
+    Dimension:
+      +materialized: table        # All models under 

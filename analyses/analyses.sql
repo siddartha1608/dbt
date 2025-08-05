@@ -1,0 +1,1 @@
+SELECT * FROM {{ ref('FACT_FINAL') }}
